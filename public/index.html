@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon.svg"><meta name="theme-color" content="#0e7c86"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <title>ورقة الكرة الطائرة الشاطئية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -91,14 +92,12 @@ const $=id=>document.getElementById(id);
 const go=v=>{S.view=v;save();view();scrollTo(0,0)};
 
 function vSetup(){const tt=i=>`<section class="box"><h2>الفريق ${i?'الثاني':'الأول'}</h2><div class="grid">${F(`t.${i}.n`,'اسم الفريق')}${F(`t.${i}.c`,'لون الزي','color')}${F(`t.${i}.lc`,'لون الليبرو','color')}${F(`t.${i}.p.0`,'اللاعب 1 (قائد الفريق)')}${F(`t.${i}.p.1`,'اللاعب 2')}</div></section>`;
- const fs=(S.sets.length&&!confirmFresh)?'':'';
- return `<section class="box"><h2>البطولة والملعب</h2><div class="grid">${F('info.tour','اسم البطولة')}${F('info.fed','الاتحاد')}${F('info.city','المدينة')}${F('info.court','الملعب')}${F('info.date','التاريخ','date')}${F('info.time','الوقت','time')}${F('info.no','رقم المباراة')}</div></section>
+  return `<section class="box"><h2>البطولة والملعب</h2><div class="grid">${F('info.tour','اسم البطولة')}${F('info.fed','الاتحاد')}${F('info.city','المدينة')}${F('info.court','الملعب')}${F('info.date','التاريخ','date')}${F('info.time','الوقت','time')}${F('info.no','رقم المباراة')}</div></section>
  ${tt(0)}${tt(1)}
  <section class="box"><h2>طاقم التحكيم</h2><div class="grid">${F('off.r1','الحكم الأول')}${F('off.r2','الحكم الثاني')}${F('off.sc','المسجل')}${F('off.ln','مراقبو الخطوط (أسماء مفصولة بفاصلة)')}</div></section>
  <section class="box"><h2>القرعة</h2><div class="grid"><label>الفائز بالقرعة<select data-p="toss.w"><option value="0" ${S.toss.w==0?'selected':''}>${e(tn(0))}</option><option value="1" ${S.toss.w==1?'selected':''}>${e(tn(1))}</option></select></label>
  <label>اختيار الفائز<select data-p="toss.ch"><option value="serve" ${S.toss.ch=='serve'?'selected':''}>الإرسال</option><option value="receive" ${S.toss.ch=='receive'?'selected':''}>الاستقبال</option><option value="side" ${S.toss.ch=='side'?'selected':''}>الجهة (الخصم يرسل)</option></select></label></div></section>
  <div class="row"><button class="btn pri" onclick="go('live')">متابعة إلى المباراة</button><button class="btn" onclick="newMatch()">مباراة جديدة (مسح كل شيء)</button></div>`}
-const confirmFresh=false;
 function newMatch(){if(confirm('سيتم مسح بيانات المباراة الحالية. هل تريد المتابعة؟')){S=fresh();save();view()}}
 
 function firstSrv(k){const f=S.sets[0]?.first;if(k===0)return S.toss.ch==='serve'?+S.toss.w:1-S.toss.w;return k===1?1-f:null}
@@ -174,5 +173,7 @@ document.querySelector('nav').onclick=ev=>{if(ev.target.dataset.v)go(ev.target.d
 $('thm').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
 view();
 </script>
+<script src="config.js"></script>
+<script src="auth.js"></script>
 </body>
 </html>
