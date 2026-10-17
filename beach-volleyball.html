@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ورقة الكرة الطائرة الشاطئية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{--bg:#eaf2f4;--card:#fff;--ink:#0d2330;--mut:#52707e;--line:#d0dfe4;--acc:#0e7c86;--accink:#fff;--warn:#f2a900;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08171f;--card:#10293a;--ink:#e8f2f5;--mut:#8fb0bd;--line:#1f3f53;--acc:#3cc2cc;--accink:#04222a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#08171f;--card:#10293a;--ink:#e8f2f5;--mut:#8fb0bd;--line:#1f3f53;--acc:#3cc2cc;--accink:#04222a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,system-ui,sans-serif;line-height:1.6}
+button,input,select{font:inherit;color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:8px 14px}
+header h1{font-size:1rem;margin:0;flex:1;font-weight:800}
+nav{display:flex;gap:4px}
+nav button,.btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:600}
+nav button.on,.btn.pri{background:var(--acc);color:var(--accink);border-color:var(--acc)}
+.btn.sm{padding:4px 10px;font-size:.85rem}.btn:disabled{opacity:.4;cursor:not-allowed}
+main{max-width:980px;margin:0 auto;padding:14px}
+section.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+h2{font-size:1.05rem;margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+label{display:flex;flex-direction:column;font-size:.85rem;color:var(--mut);gap:2px}
+input,select{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;color:var(--ink)}
+input[type=color]{padding:2px;height:38px}
+:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.alert{background:var(--warn);color:#2a1d00;border-radius:12px;padding:10px 14px;font-weight:800;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:600}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:10px;direction:ltr}
+.pan{border-radius:18px;color:#fff;border:0;min-height:230px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-shadow:0 1px 3px #0006;position:relative;width:100%}
+.pan:active{transform:scale(.985)}
+.pan .nm{font-weight:800;font-size:1.05rem;direction:rtl;padding:0 8px;text-align:center}
+.pan .sc{font-family:'Reem Kufi',sans-serif;font-size:min(30vw,9rem);line-height:1;font-weight:700}
+.pan .hint{font-size:.8rem;opacity:.9;direction:rtl}
+.srv{position:absolute;top:10px;inset-inline-start:12px;font-size:1.6rem}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;direction:ltr}
+.tools>div{direction:rtl}
+.tools .row{margin-bottom:6px}
+.log{font-size:.85rem;color:var(--mut);margin-top:6px}
+.paper{background:#fff;color:#111;border:1px solid #999;padding:16px;font-size:.82rem;direction:rtl}
+.paper h3{text-align:center;margin:0 0 8px;font-size:1.1rem}
+.paper table{width:100%;border-collapse:collapse;margin-bottom:8px}
+.paper td,.paper th{border:1px solid #444;padding:3px 6px;text-align:start;vertical-align:top}
+.paper th{background:#e6edf0;font-weight:700}
+.grd{display:flex;flex-wrap:wrap;gap:2px;direction:ltr}
+.grd i{font-style:normal;width:22px;height:22px;border:1px solid #bbb;border-radius:50%;display:inline-grid;place-items:center;font-size:.68rem;color:#999}
+.grd i.on{background:#111;color:#fff;border-color:#111}
+.seq{font-size:.68rem;color:#333;direction:ltr;word-break:break-word}
+.sigs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.sigs div{border:1px solid #444;padding:4px;text-align:center}
+canvas.pad{width:100%;height:70px;background:#fafafa;touch-action:none;display:block;cursor:crosshair}
+.ov{position:fixed;inset:0;background:#000c;z-index:20;display:grid;place-items:center;padding:16px;overflow:auto}
+.ov img{max-width:100%;background:#fff}
+@media print{header,.noprint,.alert{display:none!important}body{background:#fff}main{padding:0;max-width:none}.paper{border:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="noprint">
+<h1>🏐 ورقة المباراة · الكرة الطائرة الشاطئية</h1>
+<nav><button data-v="setup">الإعداد</button><button data-v="live">المباراة</button><button data-v="sheet">الورقة</button></nav>
+<button class="btn sm" id="thm" aria-label="تبديل الوضع الداكن">🌓</button>
+</header>
+<main id="app"></main>
+<script>
+const KEY='bv-sheet-v1';
+const fresh=()=>({view:'setup',info:{tour:'',fed:'',city:'',court:'',date:'',time:'',no:''},
+ t:[{n:'الفريق أ',c:'#0e7c86',lc:'#f2c14e',p:['','']},{n:'الفريق ب',c:'#c4344d',lc:'#f2c14e',p:['','']}],
+ off:{r1:'',r2:'',sc:'',ln:''},toss:{w:0,ch:'serve'},sets:[],cards:[],sig:{},alert:''});
+let S;try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(x){S=fresh()}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(x){}};
+const e=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const get=p=>p.split('.').reduce((o,k)=>o?.[k],S);
+const setp=(p,v)=>{const a=p.split('.'),l=a.pop();a.reduce((o,k)=>o[k],S)[l]=v;save()};
+const tm=ts=>ts?new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):'—';
+const dur=s=>s.t1?Math.max(1,Math.round((s.t1-s.t0)/60000))+' د':'—';
+const cur=()=>S.sets[S.sets.length-1];
+const won=()=>{const w=[0,0];S.sets.forEach(s=>{if(s.t1)w[s.pts[0]>s.pts[1]?0:1]++});return w};
+const over=()=>won().some(x=>x>=2);
+const tn=i=>S.t[i].n||('الفريق '+(i?'ب':'أ'));
+const F=(p,l,t='text')=>`<label>${l}<input type="${t}" data-p="${p}" value="${e(get(p))}"></label>`;
+
+function view(){document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.view));
+ $('app').innerHTML={setup:vSetup,live:vLive,sheet:vSheet}[S.view]();if(S.view==='sheet')document.querySelectorAll('canvas.pad').forEach(pad)}
+const $=id=>document.getElementById(id);
+const go=v=>{S.view=v;save();view();scrollTo(0,0)};
+
+function vSetup(){const tt=i=>`<section class="box"><h2>الفريق ${i?'الثاني':'الأول'}</h2><div class="grid">${F(`t.${i}.n`,'اسم الفريق')}${F(`t.${i}.c`,'لون الزي','color')}${F(`t.${i}.lc`,'لون الليبرو','color')}${F(`t.${i}.p.0`,'اللاعب 1 (قائد الفريق)')}${F(`t.${i}.p.1`,'اللاعب 2')}</div></section>`;
+ const fs=(S.sets.length&&!confirmFresh)?'':'';
+ return `<section class="box"><h2>البطولة والملعب</h2><div class="grid">${F('info.tour','اسم البطولة')}${F('info.fed','الاتحاد')}${F('info.city','المدينة')}${F('info.court','الملعب')}${F('info.date','التاريخ','date')}${F('info.time','الوقت','time')}${F('info.no','رقم المباراة')}</div></section>
+ ${tt(0)}${tt(1)}
+ <section class="box"><h2>طاقم التحكيم</h2><div class="grid">${F('off.r1','الحكم الأول')}${F('off.r2','الحكم الثاني')}${F('off.sc','المسجل')}${F('off.ln','مراقبو الخطوط (أسماء مفصولة بفاصلة)')}</div></section>
+ <section class="box"><h2>القرعة</h2><div class="grid"><label>الفائز بالقرعة<select data-p="toss.w"><option value="0" ${S.toss.w==0?'selected':''}>${e(tn(0))}</option><option value="1" ${S.toss.w==1?'selected':''}>${e(tn(1))}</option></select></label>
+ <label>اختيار الفائز<select data-p="toss.ch"><option value="serve" ${S.toss.ch=='serve'?'selected':''}>الإرسال</option><option value="receive" ${S.toss.ch=='receive'?'selected':''}>الاستقبال</option><option value="side" ${S.toss.ch=='side'?'selected':''}>الجهة (الخصم يرسل)</option></select></label></div></section>
+ <div class="row"><button class="btn pri" onclick="go('live')">متابعة إلى المباراة</button><button class="btn" onclick="newMatch()">مباراة جديدة (مسح كل شيء)</button></div>`}
+const confirmFresh=false;
+function newMatch(){if(confirm('سيتم مسح بيانات المباراة الحالية. هل تريد المتابعة؟')){S=fresh();save();view()}}
+
+function firstSrv(k){const f=S.sets[0]?.first;if(k===0)return S.toss.ch==='serve'?+S.toss.w:1-S.toss.w;return k===1?1-f:null}
+function startSet(srv){const k=S.sets.length;S.sets.push({pts:[0,0],log:[],t0:Date.now(),t1:null,to:[0,0],sub:[0,0],srv,first:srv,left:k%2?[1,0]:[0,1]});S.alert='';save();view()}
+
+function vLive(){const s=cur(),w=won(),k=S.sets.length-1;
+ if(!s||(s.t1&&!over())){const n=S.sets.length,f=firstSrv(n);
+  return `<section class="box"><h2>${n?`انتهى الشوط ${n} — النتيجة ${w[0]}:${w[1]}`:'جاهز لبدء المباراة'}</h2>${S.alert?`<div class="alert">${e(S.alert)}</div>`:''}
+  <p>${n==2?'الشوط الحاسم (حتى 15 نقطة): أجرِ قرعة جديدة ثم اختر من يرسل أولاً.':'اختر الفريق الذي يبدأ بالإرسال:'}</p>
+  <div class="row">${[0,1].map(i=>`<button class="btn ${f===i?'pri':''}" onclick="startSet(${i})">${e(tn(i))} يرسل</button>`).join('')}</div></section>`}
+ if(over()){return `<section class="box"><h2>🏆 انتهت المباراة</h2><p>الفائز: <b>${e(tn(w[0]>w[1]?0:1))}</b> بنتيجة ${Math.max(...w)}:${Math.min(...w)} في الأشواط</p><div class="row"><button class="btn pri" onclick="go('sheet')">افتح ورقة المباراة</button><button class="btn" onclick="undo()">تراجع عن آخر نقطة</button></div></section>`}
+ const tgt=k==2?15:21,pan=i=>`<button class="pan" style="background:${e(S.t[i].c)}" onclick="pt(${i})" aria-label="نقطة لـ ${e(tn(i))}">${s.srv===i?'<span class="srv">🏐</span>':''}<span class="nm">${e(tn(i))}</span><span class="sc">${s.pts[i]}</span><span class="hint">اضغط لإضافة نقطة</span></button>`;
+ const tl=i=>`<div><b>${e(tn(i))}</b><div class="row"><button class="btn sm" ${s.to[i]>=1?'disabled':''} onclick="tmo(${i})">⏱ وقت مستقطع (${s.to[i]}/1)</button><button class="btn sm" onclick="sub(${i})">🔁 تغيير (${s.sub[i]})</button></div>
+  <div class="row"><select id="pl${i}" aria-label="المعني بالعقوبة"><option value="0">${e(S.t[i].p[0]||'لاعب 1')}</option><option value="1">${e(S.t[i].p[1]||'لاعب 2')}</option><option value="-1">الفريق</option></select></div>
+  <div class="row"><button class="btn sm" onclick="card(${i},'Y')">🟨 إنذار</button><button class="btn sm" onclick="card(${i},'R')">🟥 عقوبة</button><button class="btn sm" onclick="card(${i},'E')">طرد</button><button class="btn sm" onclick="card(${i},'D')">استبعاد</button></div></div>`;
+ return `${S.alert?`<div class="alert" role="alert"><span>${e(S.alert)}</span><button class="btn sm" onclick="S.alert='';view()">حسناً</button></div>`:''}
+ <div class="top"><span>الشوط ${k+1} · حتى ${tgt} (فارق نقطتين)</span><span>الأشواط ${w[0]} : ${w[1]}</span></div>
+ <div class="panels">${s.left.map(pan).join('')}</div>
+ <div class="tools">${s.left.map(tl).join('')}</div>
+ <div class="row" style="margin-top:10px"><button class="btn" onclick="undo()">↩ تراجع عن آخر نقطة</button></div>
+ <div class="log">آخر النقاط: ${s.log.slice(-6).reverse().map(l=>`${l.a}-${l.b}`).join(' ، ')||'—'}</div>`}
+
+function pt(i){const s=cur();if(!s||s.t1)return;const k=S.sets.length-1,E={t:i,prev:s.srv,sw:0};s.pts[i]++;s.srv=i;E.a=s.pts[0];E.b=s.pts[1];E.time=Date.now();s.log.push(E);
+ const tot=E.a+E.b,n=k==2?5:7,tg=k==2?15:21;S.alert='';
+ if(Math.max(E.a,E.b)>=tg&&Math.abs(E.a-E.b)>=2){s.t1=Date.now();S.alert=`انتهى الشوط ${k+1} لصالح ${tn(E.a>E.b?0:1)}`}
+ else{if(tot%n===0){s.left.reverse();E.sw=1;S.alert=`🔄 تغيير الملعب الآن (مجموع النقاط ${tot})`}
+  if(k<2&&tot===21)S.alert=(S.alert?S.alert+' + ':'')+'⏱ وقت مستقطع تقني (30 ث)'}
+ save();view()}
+function undo(){const s=cur();if(!s||!s.log.length)return;const l=s.log.pop();s.pts[l.t]--;s.srv=l.prev;s.t1=null;if(l.sw)s.left.reverse();S.alert='';save();view()}
+function tmo(i){const s=cur();s.to[i]++;S.alert=`⏱ وقت مستقطع لـ ${tn(i)} (30 ثانية)`;save();view()}
+function sub(i){cur().sub[i]++;S.alert=`🔁 تغيير مسجل لـ ${tn(i)}`;save();view()}
+function card(i,ty){const s=cur(),pl=+$('pl'+i).value,nm=pl<0?'الفريق':(S.t[i].p[pl]||'لاعب '+(pl+1)),lb={Y:'إنذار',R:'عقوبة',E:'طرد',D:'استبعاد'}[ty];
+ S.cards.push({set:S.sets.length,team:i,who:nm,ty,sc:s.pts.join('-'),time:Date.now()});
+ if(ty==='R'){S.alert=`🟥 عقوبة على ${tn(i)} — نقطة للخصم`;save();pt(1-i);S.alert=`🟥 عقوبة على ${tn(i)} — نقطة للخصم`;save();view()}
+ else{S.alert=`${lb}: ${nm} (${tn(i)})`;save();view()}}
+
+function vSheet(){const w=won(),I=S.info,tgt=k=>k==2?15:21;
+ const setB=k=>{const s=S.sets[k];if(!s)return `<table><tr><th>الشوط ${k+1}</th><td>لم يُلعب</td></tr></table>`;
+  return `<table><tr><th colspan="4">الشوط ${k+1} — النتيجة ${s.pts[0]}:${s.pts[1]}</th></tr>
+  ${[0,1].map(i=>`<tr><th style="width:18%">${e(tn(i))}</th><td colspan="3"><div class="grd">${Array.from({length:Math.max(tgt(k),s.pts[i])},(_,n)=>`<i class="${n<s.pts[i]?'on':''}">${n+1}</i>`).join('')}</div></td></tr>`).join('')}
+  <tr><th>تسلسل النقاط</th><td colspan="3" class="seq">${s.log.map(l=>`${l.a}-${l.b}(${tm(l.time)})`).join('  ')||'—'}</td></tr>
+  <tr><th>البداية</th><td>${tm(s.t0)}</td><th>النهاية / المدة</th><td>${tm(s.t1)} / ${dur(s)}</td></tr>
+  <tr><th>مستقطع</th><td>${e(tn(0))}: ${s.to[0]} · ${e(tn(1))}: ${s.to[1]}</td><th>تغييرات</th><td>${s.sub[0]} · ${s.sub[1]}</td></tr></table>`};
+ const sg=(k,l)=>`<div><canvas class="pad" data-k="${k}" width="300" height="90"></canvas>${l}<br><a href="#" class="noprint" data-c="${k}" style="font-size:.7rem">مسح</a></div>`;
+ return `<div class="row noprint" style="margin-bottom:10px"><button class="btn pri" onclick="png()">🖼 تصدير PNG</button><button class="btn" onclick="try{print()}catch(x){alert('الطباعة غير متاحة هنا')}">🖨 طباعة / PDF</button><button class="btn" onclick="wa()">💬 مشاركة واتساب</button></div>
+ <div class="paper" id="sheet"><h3>ورقة المباراة الرسمية — الكرة الطائرة الشاطئية (FIVB)</h3>
+ <table><tr><th>البطولة</th><td>${e(I.tour)}</td><th>الاتحاد</th><td>${e(I.fed)}</td></tr><tr><th>المدينة</th><td>${e(I.city)}</td><th>الملعب</th><td>${e(I.court)}</td></tr><tr><th>التاريخ</th><td>${e(I.date)}</td><th>الوقت · رقم المباراة</th><td>${e(I.time)} · ${e(I.no)}</td></tr></table>
+ <table><tr><th>الفريق</th><th>اللاعبان</th><th>لون الزي</th><th>لون الليبرو</th><th>أشواط</th></tr>${[0,1].map(i=>`<tr><td>${e(tn(i))}</td><td>${e(S.t[i].p[0])} / ${e(S.t[i].p[1])}</td><td style="background:${e(S.t[i].c)}"></td><td style="background:${e(S.t[i].lc)}"></td><td>${w[i]}</td></tr>`).join('')}</table>
+ <table><tr><th>الحكم الأول</th><td>${e(S.off.r1)}</td><th>الحكم الثاني</th><td>${e(S.off.r2)}</td></tr><tr><th>المسجل</th><td>${e(S.off.sc)}</td><th>مراقبو الخطوط</th><td>${e(S.off.ln)}</td></tr><tr><th>القرعة</th><td colspan="3">${e(tn(+S.toss.w))} — ${{serve:'اختار الإرسال',receive:'اختار الاستقبال',side:'اختار الجهة'}[S.toss.ch]}</td></tr></table>
+ ${[0,1,2].map(setB).join('')}
+ <table><tr><th>العقوبات</th><th>الشوط</th><th>الفريق</th><th>المعني</th><th>النوع</th><th>النتيجة</th></tr>${S.cards.map(c=>`<tr><td>${tm(c.time)}</td><td>${c.set}</td><td>${e(tn(c.team))}</td><td>${e(c.who)}</td><td>${{Y:'🟨 إنذار',R:'🟥 عقوبة',E:'طرد',D:'استبعاد'}[c.ty]}</td><td>${c.sc}</td></tr>`).join('')||'<tr><td colspan="6">لا توجد عقوبات</td></tr>'}</table>
+ <table><tr><th>النتيجة النهائية</th><td>${e(tn(0))} ${w[0]} : ${w[1]} ${e(tn(1))} — ${S.sets.map(s=>s.pts.join('-')).join(' / ')}</td></tr></table>
+ <div class="sigs">${sg('r1','الحكم الأول')}${sg('r2','الحكم الثاني')}${sg('sc','المسجل')}${sg('c0','قائد '+e(tn(0)))}${sg('c1','قائد '+e(tn(1)))}</div></div>`}
+
+function pad(c){const x=c.getContext('2d'),k=c.dataset.k;x.lineWidth=2;x.lineCap='round';x.strokeStyle='#111';
+ if(S.sig[k]){const im=new Image();im.onload=()=>x.drawImage(im,0,0);im.src=S.sig[k]}
+ let d=false;const P=ev=>{const r=c.getBoundingClientRect();return[(ev.clientX-r.left)*c.width/r.width,(ev.clientY-r.top)*c.height/r.height]};
+ c.onpointerdown=ev=>{d=true;c.setPointerCapture(ev.pointerId);x.beginPath();x.moveTo(...P(ev))};
+ c.onpointermove=ev=>{if(d){x.lineTo(...P(ev));x.stroke()}};
+ c.onpointerup=()=>{if(d){d=false;S.sig[k]=c.toDataURL();save()}}}
+
+async function png(){const el=$('sheet');if(!window.html2canvas)return alert('تعذر تحميل أداة التصدير. جرّب الطباعة بدلاً من ذلك.');
+ const cv=await html2canvas(el,{scale:2,backgroundColor:'#fff'}),u=cv.toDataURL('image/png');
+ const o=document.createElement('div');o.className='ov';o.innerHTML=`<div style="text-align:center;color:#fff"><p>اضغط مطولاً (أو زر الفأرة الأيمن) على الصورة لحفظها</p><img src="${u}" alt="ورقة المباراة"><p><button class="btn pri" id="cl">إغلاق</button></p></div>`;
+ document.body.appendChild(o);$('cl').onclick=()=>o.remove()}
+function wa(){const w=won(),I=S.info;const m=`🏐 *${I.tour||'مباراة كرة طائرة شاطئية'}*\n📍 ${[I.city,I.court].filter(Boolean).join(' - ')}\n📅 ${I.date||''} ${I.time||''}\n\n*${tn(0)}* ${w[0]} : ${w[1]} *${tn(1)}*\n${S.sets.map((s,i)=>`الشوط ${i+1}: ${s.pts[0]}-${s.pts[1]}`).join('\n')}\n\nالحكم الأول: ${S.off.r1||'—'}`;
+ window.open('https://wa.me/?text='+encodeURIComponent(m),'_blank')}
+
+document.addEventListener('input',ev=>{const p=ev.target.dataset?.p;if(p)setp(p,ev.target.value)});
+document.addEventListener('change',ev=>{if(ev.target.dataset?.p?.startsWith('toss')||ev.target.dataset?.p?.endsWith('.n'))view()});
+document.addEventListener('click',ev=>{const c=ev.target.dataset?.c;if(c){ev.preventDefault();delete S.sig[c];save();view()}});
+document.querySelector('nav').onclick=ev=>{if(ev.target.dataset.v)go(ev.target.dataset.v)};
+$('thm').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+view();
+</script>
+</body>
+</html>
